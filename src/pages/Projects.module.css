@@ -1,0 +1,17 @@
+.page {
+  padding-top: calc(var(--nav-h) + clamp(40px, 7vw, 96px));
+}
+
+.title {
+  font-size: clamp(3rem, 1rem + 9vw, 10rem);
+  letter-spacing: -0.035em;
+}
+
+.list {
+  display: grid;
+  gap: clamp(24px, 4vw, 48px);
+  margin-top: clamp(40px, 6vw, 80px);
+  padding: 0;
+  list-style: none;
+  perspective: 1400px;
+}

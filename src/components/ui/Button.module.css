@@ -1,0 +1,58 @@
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 26px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    color 0.35s var(--ease-out),
+    border-color 0.35s var(--ease-out),
+    background-color 0.35s var(--ease-out);
+}
+
+/* A viridis wash that rises from the bottom on hover */
+.button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--viridis-deep);
+  transform: translateY(102%);
+  transition: transform 0.55s var(--ease-in-out);
+}
+
+.button:is(:hover, :focus-visible)::before {
+  transform: translateY(0);
+}
+
+.solid {
+  background: var(--ink);
+  color: var(--surface);
+  --roll-color: var(--surface);
+}
+
+.ghost {
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  border-color: var(--rule);
+  color: var(--ink);
+  --roll-color: var(--surface);
+}
+
+.ghost:is(:hover, :focus-visible) {
+  border-color: transparent;
+}
+
+.button:disabled {
+  cursor: progress;
+  opacity: 0.75;
+}

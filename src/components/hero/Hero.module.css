@@ -1,0 +1,112 @@
+.hero {
+  padding-top: calc(var(--nav-h) + clamp(40px, 7vw, 96px));
+}
+
+/* The plot frame: y axis on the left, x axis along the bottom, ticks outward */
+.figure {
+  position: relative;
+  padding: clamp(20px, 3.2vw, 44px) 0 clamp(18px, 3vw, 40px) clamp(18px, 3.2vw, 44px);
+}
+
+.axisY,
+.axisX {
+  position: absolute;
+  display: block;
+  background: var(--ink);
+  opacity: 0.22;
+}
+
+.axisY {
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  transform-origin: bottom;
+}
+
+.axisX {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  transform-origin: left;
+}
+
+.axisY::before,
+.axisX::before {
+  content: '';
+  position: absolute;
+  background-repeat: repeat;
+}
+
+.axisY::before {
+  right: 1px;
+  top: 0;
+  bottom: 0;
+  width: 7px;
+  background-image: linear-gradient(to bottom, var(--ink) 0 1px, transparent 1px);
+  background-size: 100% 25%;
+}
+
+.axisX::before {
+  left: 0;
+  right: 0;
+  top: 1px;
+  height: 7px;
+  background-image: linear-gradient(to right, var(--ink) 0 1px, transparent 1px);
+  background-size: 10% 100%;
+}
+
+.plot {
+  position: relative;
+}
+
+.caption {
+  position: absolute;
+  top: calc(100% + 14px);
+  right: 0;
+  max-width: 100%;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  text-align: right;
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 28px 48px;
+  margin-top: clamp(64px, 7vw, 92px);
+}
+
+.intro {
+  max-width: 30ch;
+  font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  font-weight: 460;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (max-width: 760px) {
+  .meta {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .caption {
+    left: 0;
+    text-align: left;
+  }
+
+  .meta {
+    margin-top: 76px;
+  }
+}

@@ -1,0 +1,139 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  padding-top: calc(14px + env(safe-area-inset-top, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  pointer-events: none;
+}
+
+.capsule {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface) 76%, transparent);
+  border: 1px solid color-mix(in srgb, var(--rule) 85%, transparent);
+  backdrop-filter: blur(16px) saturate(1.6);
+  -webkit-backdrop-filter: blur(16px) saturate(1.6);
+  pointer-events: auto;
+  transition:
+    box-shadow 0.45s var(--ease-out),
+    background-color 0.45s var(--ease-out);
+}
+
+.header[data-scrolled] .capsule {
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
+  box-shadow: var(--shadow-float);
+}
+
+.header[data-open] .capsule {
+  background: var(--surface);
+  box-shadow: none;
+}
+
+.brand {
+  display: grid;
+  place-items: center;
+  height: 42px;
+  padding-inline: 14px 12px;
+  border-radius: 999px;
+}
+
+.list {
+  display: flex;
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.link {
+  position: relative;
+  display: block;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 0.9375rem;
+  font-weight: 560;
+  line-height: 1.4;
+  color: var(--ink-soft);
+  transition: color 0.25s var(--ease-out) 0.05s;
+}
+
+.link:hover {
+  color: var(--ink);
+}
+
+.link[data-active] {
+  color: var(--surface);
+}
+
+.label {
+  position: relative;
+  z-index: 1;
+}
+
+.activePill,
+.hoverPill {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.activePill {
+  background: var(--ink);
+}
+
+.hoverPill {
+  background: var(--tint-teal);
+}
+
+.clock {
+  padding-inline: 10px 14px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.menuButton {
+  display: none;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-left: auto;
+  border: 0;
+  border-radius: 999px;
+  background: var(--ink);
+  cursor: pointer;
+}
+
+.menuLine {
+  grid-area: 1 / 1;
+  width: 18px;
+  height: 1.6px;
+  border-radius: 2px;
+  background: var(--surface);
+}
+
+@media (max-width: 760px) {
+  .nav,
+  .clock {
+    display: none;
+  }
+
+  .capsule {
+    width: 100%;
+  }
+
+  .menuButton {
+    display: grid;
+  }
+}

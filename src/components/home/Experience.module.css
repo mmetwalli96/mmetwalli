@@ -1,0 +1,244 @@
+.section {
+  padding-top: var(--section-space);
+}
+
+.title {
+  font-size: var(--step-4);
+}
+
+/* Desktop: a stem plot over a horizontal time axis */
+.chart {
+  --plot-h: 300px;
+  position: relative;
+  height: calc(var(--plot-h) + 52px);
+  margin-top: clamp(64px, 7vw, 96px);
+}
+
+.axis {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: var(--plot-h);
+  height: 1px;
+  background: var(--rule);
+}
+
+.progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -1px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--viridis);
+  transform-origin: left center;
+  transform: scaleX(var(--p, 0));
+}
+
+.tick {
+  position: absolute;
+  top: 1px;
+  left: calc(var(--pos) * 100%);
+  width: 1px;
+  height: 8px;
+  background: color-mix(in srgb, var(--ink) 35%, transparent);
+}
+
+.year {
+  position: absolute;
+  top: 14px;
+  left: 0;
+  transform: translateX(-50%);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.list {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: var(--plot-h);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  position: absolute;
+  bottom: 0;
+  left: calc(var(--pos) * 100%);
+  width: 0;
+  height: calc(var(--stem) * 100%);
+}
+
+.stem {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -0.5px;
+  width: 1px;
+  background: var(--rule);
+  transition: background-color 0.5s var(--ease-out);
+}
+
+.marker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  translate: -50% -50%;
+  background: var(--paper);
+  border: 2px solid color-mix(in srgb, var(--ink) 22%, transparent);
+  transition:
+    background-color 0.45s var(--ease-out),
+    border-color 0.45s var(--ease-out),
+    box-shadow 0.45s var(--ease-out),
+    scale 0.45s var(--ease-out);
+}
+
+.marker::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 2px solid var(--c);
+  opacity: 0;
+}
+
+.item[data-reached] .stem {
+  background: var(--c);
+}
+
+.item[data-reached] .marker {
+  background: var(--c);
+  border-color: var(--c);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--c) 18%, transparent);
+  scale: 1.1;
+}
+
+.item[data-current][data-reached] .marker::after {
+  animation: ring 2.4s var(--ease-out) infinite;
+}
+
+@keyframes ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  75%,
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+.label {
+  position: absolute;
+  top: -11px;
+  left: 20px;
+  width: max-content;
+  max-width: 15rem;
+}
+
+.item[data-align='end'] .label {
+  left: auto;
+  right: 20px;
+  text-align: right;
+}
+
+.date {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.what {
+  margin-top: 2px;
+  font-size: 1.1875rem;
+  font-weight: 640;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: color-mix(in srgb, var(--ink) 78%, var(--paper));
+  transition: color 0.45s var(--ease-out);
+}
+
+.item[data-reached] .what {
+  color: var(--ink);
+}
+
+.org {
+  margin-top: 2px;
+  font-size: 0.9375rem;
+  color: var(--ink-soft);
+}
+
+/* Narrow screens: the axis turns vertical and milestones stack */
+@media (max-width: 859px) {
+  .chart {
+    height: auto;
+    padding-left: 40px;
+    margin-top: 48px;
+  }
+
+  .axis {
+    top: 8px;
+    bottom: 8px;
+    left: 7px;
+    right: auto;
+    width: 1px;
+    height: auto;
+  }
+
+  .progress {
+    top: 0;
+    bottom: 0;
+    left: -1px;
+    right: auto;
+    width: 3px;
+    height: auto;
+    background: var(--viridis-down);
+    transform-origin: center top;
+    transform: scaleY(var(--p, 0));
+  }
+
+  .tick,
+  .stem {
+    display: none;
+  }
+
+  .list {
+    position: relative;
+    inset: auto;
+    height: auto;
+    display: grid;
+    gap: 40px;
+  }
+
+  .item {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    width: auto;
+    height: auto;
+  }
+
+  .marker {
+    top: 10px;
+    left: -32.5px;
+  }
+
+  .label,
+  .item[data-align='end'] .label {
+    position: static;
+    width: auto;
+    max-width: none;
+    text-align: left;
+  }
+}

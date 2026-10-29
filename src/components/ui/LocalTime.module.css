@@ -1,0 +1,36 @@
+.time {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.pulse {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--v4);
+}
+
+.pulse::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--v4);
+  animation: ping 2.4s var(--ease-out) infinite;
+}
+
+@keyframes ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  70%,
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
