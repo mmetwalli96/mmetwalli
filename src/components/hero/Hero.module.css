@@ -2,7 +2,6 @@
   padding-top: calc(var(--nav-h) + clamp(40px, 7vw, 96px));
 }
 
-/* The plot frame: y axis on the left, x axis along the bottom, ticks outward */
 .figure {
   position: relative;
   padding: clamp(20px, 3.2vw, 44px) 0 clamp(18px, 3vw, 40px) clamp(18px, 3.2vw, 44px);

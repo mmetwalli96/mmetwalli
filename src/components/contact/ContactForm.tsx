@@ -217,7 +217,6 @@ export function ContactForm() {
               onBlur={blur('message')}
             />
 
-            {/* Hidden from people; bots tend to fill it in. Named for Formspree's spam filter. */}
             <div className={styles.honeypot} aria-hidden="true">
               <label htmlFor="contact-company">Company</label>
               <input ref={honeypotRef} id="contact-company" name="_gotcha" type="text" tabIndex={-1} autoComplete="off" />

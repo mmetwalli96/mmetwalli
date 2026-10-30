@@ -14,16 +14,11 @@ function toDate(value: string, now: Date): Date {
   return new Date(Date.UTC(year, month - 1, 1));
 }
 
-/** Stem heights alternate so neighbouring labels never collide; the latest stands tallest. */
 function stemHeight(index: number, count: number): number {
   if (index === count - 1) return 1;
   return index % 2 === 0 ? 0.7 : 0.32;
 }
 
-/**
- * Career as a stem plot on a true time axis: each milestone stands at its date,
- * and a viridis line fills the axis as the section scrolls into view.
- */
 export function Experience() {
   const chartRef = useRef<HTMLDivElement>(null);
   const wide = useMediaQuery('(min-width: 860px)');

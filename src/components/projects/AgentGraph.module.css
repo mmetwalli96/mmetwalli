@@ -37,8 +37,6 @@
   }
 }
 
-/* Parts cross the belt in 9s; a new one starts every 2.25s. They pick up
-   each station's colour as they pass it (stations sit at 19%, 48% and 78%). */
 .part {
   fill: #c3cccd;
   animation: travel 9s linear infinite;

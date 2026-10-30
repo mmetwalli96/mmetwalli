@@ -12,7 +12,6 @@
   will-change: transform;
 }
 
-/* Light that follows the pointer across the card */
 .card::before {
   content: '';
   position: absolute;

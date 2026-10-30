@@ -11,11 +11,6 @@ const BAR_COLORS = Array.from({ length: BAR_COUNT }, (_, i) => viridisLight(i / 
 const EASE = [0.76, 0, 0.24, 1] as const;
 const STAGGER = 0.032;
 
-/**
- * Wraps every route. On navigation, bars rise like a bar chart to cover the
- * old page, then drain upward to reveal the new one. With reduced motion the
- * pages simply cross-fade.
- */
 export function Page({ title, children }: { title?: string; children: ReactNode }) {
   usePageTitle(title);
   const isInitial = useIsInitialPage();

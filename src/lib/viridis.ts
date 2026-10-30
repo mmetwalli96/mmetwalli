@@ -1,7 +1,3 @@
-/**
- * Viridis, matplotlib's default colormap, sampled at ten evenly spaced stops.
- * The whole site's accent palette is drawn from it.
- */
 const STOPS: ReadonlyArray<readonly [number, number, number]> = [
   [68, 1, 84],
   [72, 40, 120],
@@ -30,7 +26,6 @@ export function viridisHex(t: number): string {
     .join('')}`;
 }
 
-/** The slice of the map used on a light background (the yellow end is too pale to read). */
 export const LIGHT_RANGE: readonly [number, number] = [0.1, 0.78];
 
 export function viridisLight(t: number): string {

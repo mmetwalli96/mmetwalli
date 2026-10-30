@@ -2,8 +2,6 @@ import { useSyncExternalStore } from 'react';
 import { profile } from '@/data/profile';
 import styles from '@/components/ui/LocalTime.module.css';
 
-// One shared clock that ticks on each minute boundary, so every
-// LocalTime on the page changes at the same moment.
 let current = new Date();
 let timer = 0;
 const listeners = new Set<() => void>();
@@ -39,11 +37,9 @@ const format = new Intl.DateTimeFormat('en-US', {
 
 type Props = {
   className?: string;
-  /** Show the city before the time. */
   withCity?: boolean;
 };
 
-/** Current time in Toronto. */
 export function LocalTime({ className, withCity = true }: Props) {
   const now = useSyncExternalStore(subscribe, getSnapshot, getSnapshot);
 

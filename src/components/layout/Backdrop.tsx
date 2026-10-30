@@ -1,10 +1,6 @@
 import { useEffect, useRef } from 'react';
 import styles from '@/components/layout/Backdrop.module.css';
 
-/**
- * A faint dot grid behind every page, like plotting paper. Near a mouse
- * pointer the dots light up in teal.
- */
 export function Backdrop() {
   const ref = useRef<HTMLDivElement>(null);
 

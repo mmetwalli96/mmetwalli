@@ -15,7 +15,6 @@ type Props = {
 
 const EASE = [0.76, 0, 0.24, 1] as const;
 
-/** Full-screen menu for small screens, revealed as a circle growing from the menu button. */
 export function MobileMenu({ open, activeTo, originRef, onNavigate }: Props) {
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
   const [origin, setOrigin] = useState({ x: 0, y: 0, r: 0 });

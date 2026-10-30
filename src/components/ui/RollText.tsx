@@ -1,9 +1,5 @@
 import { cssVars } from '@/lib/hooks';
 
-/**
- * Splits text into glyphs that roll upward on hover or focus of the nearest link
- * or button. Screen readers get the plain text once.
- */
 export function RollText({ text }: { text: string }) {
   let index = 0;
   return (

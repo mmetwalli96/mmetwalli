@@ -8,10 +8,6 @@ type Props = {
   id?: string;
 };
 
-/**
- * A headline whose letters start scattered and settle into place on load,
- * a small echo of the hero's points converging on the name.
- */
 export function ScatterTitle({ text, as = 'h1', className, id }: Props) {
   const Tag = as;
   const offsets = useMemo(

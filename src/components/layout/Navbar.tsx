@@ -18,7 +18,6 @@ export function Navbar() {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const activeTo = NAV_LINKS.find((link) => link.to === pathname)?.to ?? null;
 
-  // Close the mobile menu whenever the route changes.
   useEffect(() => setOpen(false), [pathname]);
 
   const close = (returnFocus = false) => {
@@ -26,7 +25,6 @@ export function Navbar() {
     if (returnFocus) buttonRef.current?.focus();
   };
 
-  // Keep keyboard focus inside the header while the full-screen menu is open.
   const onKeyDown = (event: KeyboardEvent<HTMLElement>) => {
     if (!open) return;
     if (event.key === 'Escape') {

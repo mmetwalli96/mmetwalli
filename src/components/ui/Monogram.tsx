@@ -2,13 +2,11 @@ import { useMemo, useState } from 'react';
 import { motion } from 'motion/react';
 import { viridisLight } from '@/lib/viridis';
 
-// "MM" on a 5-row dot matrix: two 5x5 letters with one empty column between.
 const M = ['10001', '11011', '10101', '10001', '10001'];
 const ROWS = M.map((row) => `${row}0${row}`);
 const STEP = 4.4;
 const R = 1.65;
 
-/** The site mark: MM in viridis dots. The dots scatter a little on hover. */
 export function Monogram() {
   const [hover, setHover] = useState(false);
 

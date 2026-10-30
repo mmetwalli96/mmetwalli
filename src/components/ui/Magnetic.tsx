@@ -4,12 +4,10 @@ import { motion, useReducedMotion, useSpring } from 'motion/react';
 
 type Props = {
   children: ReactNode;
-  /** How far the element follows the pointer, as a fraction of the offset. */
   strength?: number;
   className?: string;
 };
 
-/** Pulls its child gently toward a mouse pointer, then springs back. */
 export function Magnetic({ children, strength = 0.3, className }: Props) {
   const ref = useRef<HTMLSpanElement>(null);
   const reduced = useReducedMotion();

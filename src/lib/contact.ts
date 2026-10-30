@@ -7,19 +7,9 @@ export type ContactMessage = {
 
 const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT?.trim() ?? '';
 
-/**
- * True once VITE_CONTACT_ENDPOINT is set. Until then the form runs in preview
- * mode: it validates and animates, but nothing is delivered.
- */
 export const isContactConnected = endpoint.length > 0;
 
-/**
- * Sends the message as JSON to the configured endpoint.
- * Works out of the box with Formspree (https://formspree.io/f/<id>), and with any
- * service or serverless function that accepts a JSON POST.
- */
 export async function sendContactMessage(message: ContactMessage, honeypot = ''): Promise<void> {
-  // Bots fill the hidden field; pretend it worked and drop the message.
   if (honeypot) return;
 
   if (!isContactConnected) {

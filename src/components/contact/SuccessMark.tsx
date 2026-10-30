@@ -3,7 +3,6 @@ import { viridisLight } from '@/lib/viridis';
 
 const DOTS = 12;
 
-/** A check mark that draws itself while a ring of viridis dots bursts and settles. */
 export function SuccessMark() {
   return (
     <svg width="112" height="112" viewBox="0 0 112 112" aria-hidden="true">

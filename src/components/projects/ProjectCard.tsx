@@ -6,7 +6,6 @@ import { ButtonLink } from '@/components/ui/Button';
 import { AgentGraph } from '@/components/projects/AgentGraph';
 import styles from '@/components/projects/ProjectCard.module.css';
 
-/** A project figure that tilts toward the pointer, with a soft light following it. */
 export function ProjectCard({ project }: { project: Project }) {
   const ref = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();

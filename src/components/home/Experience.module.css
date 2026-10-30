@@ -6,7 +6,6 @@
   font-size: var(--step-4);
 }
 
-/* Desktop: a stem plot over a horizontal time axis */
 .chart {
   --plot-h: 300px;
   position: relative;

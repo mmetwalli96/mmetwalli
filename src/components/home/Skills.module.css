@@ -39,7 +39,6 @@
   letter-spacing: -0.01em;
 }
 
-/* The category's line, drawn from its label into its tools */
 .label::after,
 .items::before {
   content: '';
@@ -91,7 +90,6 @@
   transform: scaleX(1);
 }
 
-/* A pulse that travels the line while its category is hovered */
 .items::after {
   content: '';
   position: absolute;
@@ -168,7 +166,6 @@
   border-color: var(--c);
 }
 
-/* When the list first scrolls into view, each tool lights up in turn, like a scanner passing */
 .groups[data-inview] .token {
   animation: scan 1.1s var(--ease-out) backwards;
   animation-delay: calc(var(--ti) * 70ms + 650ms);

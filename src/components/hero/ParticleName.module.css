@@ -1,7 +1,6 @@
 .wrap {
   position: relative;
   width: 100%;
-  /* Placeholder until the font loads and the real height is measured */
   aspect-ratio: 3.1 / 1;
 }
 

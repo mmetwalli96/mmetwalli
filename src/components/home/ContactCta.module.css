@@ -17,7 +17,6 @@
   letter-spacing: -0.035em;
 }
 
-/* A short viridis bar that stretches into a full underline on hover */
 .link::after {
   content: '';
   position: absolute;

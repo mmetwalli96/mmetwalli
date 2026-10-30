@@ -7,10 +7,6 @@ import styles from '@/components/home/Skills.module.css';
 
 const GROUP_COLORS = ['var(--v1)', 'var(--v2)', 'var(--v3)', 'var(--v4)', 'var(--v5)'];
 
-/**
- * Skills read like a chart legend: each category is a line with its tools as
- * stations. Hovering a category highlights it and sends a pulse down its line.
- */
 export function Skills() {
   const listRef = useRef<HTMLUListElement>(null);
   const inView = useInView(listRef, { once: true, amount: 0.3 });

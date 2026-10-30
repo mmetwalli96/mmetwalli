@@ -3,13 +3,6 @@ import { useReducedMotion } from 'motion/react';
 import { viridis, LIGHT_RANGE } from '@/lib/viridis';
 import styles from '@/components/hero/ParticleName.module.css';
 
-/*
- * The name is drawn as a scatter plot: points start as a noisy, correlated cloud
- * with a fitted trend line, then converge onto the letterforms, left to right.
- * Afterwards the points can be pushed around with the pointer, and a click
- * scatters them and runs the fit again.
- */
-
 const FAMILY = '"Archivo Variable", "Archivo", "Helvetica Neue", Arial, sans-serif';
 const WEIGHT = 800;
 const BUCKETS = 32;
@@ -52,8 +45,6 @@ function gaussian() {
 
 function setFont(ctx: CanvasRenderingContext2D, size: number) {
   ctx.font = `${WEIGHT} ${size}px ${FAMILY}`;
-  // Archivo's width axis at "expanded" (125%). Browsers without canvas
-  // fontStretch fall back to the normal width, which still reads well.
   if ('fontStretch' in ctx) ctx.fontStretch = 'expanded';
 }
 
@@ -112,8 +103,6 @@ function computeLayout(width: number, lines: readonly string[]): Layout {
   const tx = Float32Array.from(xs);
   const ty = Float32Array.from(ys);
 
-  // Colour every point by a diagonal position through the light half of viridis,
-  // then sort indices into buckets so each colour is one fill call.
   const bucketOf = new Int32Array(count);
   const bucketCount = new Int32Array(BUCKETS);
   for (let i = 0; i < count; i++) {
@@ -159,7 +148,6 @@ export function ParticleName({ lines }: { lines: readonly string[] }) {
     let lastWidth = 0;
     let introPlayed = false;
 
-    // Particle state
     let x = new Float32Array(0);
     let y = new Float32Array(0);
     let vx = new Float32Array(0);
@@ -182,7 +170,6 @@ export function ParticleName({ lines }: { lines: readonly string[] }) {
     let tweenEase = easeInOutCubic;
     let tweenDone: (() => void) | null = null;
 
-    // Fade-in of the cloud and the fitted trend line
     let appearStart = 0;
     let appear = 1;
     let line = { from: 0, to: 0, start: 0, duration: 1 };
@@ -209,7 +196,7 @@ export function ParticleName({ lines }: { lines: readonly string[] }) {
       scatterY = new Float32Array(n);
     };
 
-    // A correlated Gaussian cloud: what the data looks like before the fit.
+    
     const makeScatter = () => {
       if (!layout) return;
       const { w, h, radius, count } = layout;
@@ -217,8 +204,6 @@ export function ParticleName({ lines }: { lines: readonly string[] }) {
       trend.cy = h * 0.52;
       trend.slope = -(h / w) * 0.62;
       for (let i = 0; i < count; i++) {
-        // Redraw samples that land outside the plot instead of clamping them,
-        // which would stack points into visible lines along the edges.
         let sx = 0;
         let sy = 0;
         for (let attempt = 0; attempt < 12; attempt++) {
@@ -466,7 +451,6 @@ export function ParticleName({ lines }: { lines: readonly string[] }) {
       }
     };
 
-    // Wait for the variable font so the letterforms are sampled from Archivo.
     const fontsReady = document.fonts?.load
       ? Promise.race([
           document.fonts.load(`${WEIGHT} 100px "Archivo Variable"`, text.join('')),

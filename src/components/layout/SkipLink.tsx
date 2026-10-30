@@ -1,4 +1,3 @@
-/** Lets keyboard users jump past the navigation. Works with any router mode. */
 export function SkipLink() {
   return (
     <a

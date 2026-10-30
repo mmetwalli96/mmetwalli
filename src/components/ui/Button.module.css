@@ -19,7 +19,6 @@
     background-color 0.35s var(--ease-out);
 }
 
-/* A viridis wash that rises from the bottom on hover */
 .button::before {
   content: '';
   position: absolute;

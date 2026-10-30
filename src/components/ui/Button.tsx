@@ -10,7 +10,6 @@ function classes(variant: Variant, extra?: string) {
   return [styles.button, styles[variant], extra].filter(Boolean).join(' ');
 }
 
-/** A pill-shaped link. Internal paths use the router; full URLs open in a new tab. */
 export function ButtonLink({ to, children, variant = 'solid' }: { to: string; children: string; variant?: Variant }) {
   const external = /^https?:\/\//.test(to);
   return (

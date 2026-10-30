@@ -20,7 +20,6 @@ export default function App() {
       <Backdrop />
       <Navbar />
       <InitialRouteContext.Provider value={location.key === initialKey.current}>
-        {/* The old page plays its exit (bars rise) before the new one mounts. */}
         <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />
