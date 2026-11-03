@@ -20,7 +20,7 @@ export async function sendContactMessage(message: ContactMessage, honeypot = '')
 
   const response = await fetch(endpoint, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', authorization: `Bearer ${import.meta.env.VITE_CONTACT_API_KEY?.trim() ?? ''}`, Accept: 'application/json' },
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
     body: JSON.stringify({ ...message, _subject: message.subject || `New message from ${message.name}` }),
   });
 
