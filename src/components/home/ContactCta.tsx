@@ -11,6 +11,9 @@ export function ContactCta() {
             <RollText text="Get in touch" />
           </span>
         </Link>
+        <p className={styles.description}>
+          Feel free to reach out for collaborations or inquiries
+        </p>
       </div>
     </section>
   );
