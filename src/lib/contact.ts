@@ -21,7 +21,7 @@ export async function sendContactMessage(message: ContactMessage, honeypot = '')
   const response = await fetch(endpoint, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    body: JSON.stringify({ ...message, _subject: message.subject || `New message from ${message.name}` }),
+    body: JSON.stringify({ ...message, subject: message.subject || `New message from ${message.name}` }),
   });
 
   if (!response.ok) {
