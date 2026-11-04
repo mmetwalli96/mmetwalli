@@ -1,0 +1,63 @@
+name: Deploy MMETWALLI
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  check:
+    name: Test Installation & Build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: .
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v7
+      - name: SetUp NodeJs
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install Dependencies
+        run: npm ci --include=dev
+      - name: Build
+        run: npm run build
+
+  deploy:
+    name: GCP MMETWALLI VM
+    needs: check
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v3
+        with:
+          workload_identity_provider: ${{ vars.GCP_WIF_PROVIDER }}
+          service_account: ${{ vars.GCP_SA }}
+
+      - name: Set up gcloud
+        uses: google-github-actions/setup-gcloud@v3
+
+      - name: Run deploy script on the VM
+        run: |
+          gcloud compute ssh "${{ vars.GCP_VM }}" \
+            --project "${{ vars.GCP_PROJECT }}" \
+            --zone "${{ vars.GCP_ZONE }}" \
+            --tunnel-through-iap \
+            --ssh-key-expire-after=30m \
+            --quiet \
+            --command "sudo -iu ${{ vars.APP_USER }} env COMMIT_SHA=${{ github.sha }} bash -s" \
+            < ./.github/scripts/deploy.sh
+
+
+  
