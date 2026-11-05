@@ -47,7 +47,8 @@
 }
 
 .title {
-  font-size: clamp(2.75rem, 1.4rem + 4.4vw, 5.5rem);
+  font-weight: 500;
+  font-size: clamp(1.9em, 1.2rem + 3.25vw, 4.25rem);
 }
 
 .summary {
