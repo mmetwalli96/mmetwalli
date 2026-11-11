@@ -11,6 +11,6 @@ export const projects: Project[] = [
     id: 'mm-auto',
     title: 'MM AUTO',
     summary: 'An agentic approach for factory automation',
-    placeholder: 'Details coming soon.',
+    href: '/projects/mm-auto',
   },
 ];
