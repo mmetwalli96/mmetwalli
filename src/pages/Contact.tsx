@@ -3,7 +3,7 @@ import { ContactForm } from '@/components/contact/ContactForm';
 import { LocalTime } from '@/components/ui/LocalTime';
 import { ScatterTitle } from '@/components/ui/ScatterTitle';
 import { profile } from '@/data/profile';
-import styles from '@/pages/Contact.module.css';
+import styles from '@/styles/Contact.module.css';
 
 export default function Contact() {
   return (

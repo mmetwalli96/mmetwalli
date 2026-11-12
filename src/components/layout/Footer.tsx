@@ -1,6 +1,6 @@
 import { profile } from '@/data/profile';
 import { LocalTime } from '@/components/ui/LocalTime';
-import styles from '@/components/layout/Footer.module.css';
+import styles from '@/styles/Footer.module.css';
 
 export function Footer() {
   return (

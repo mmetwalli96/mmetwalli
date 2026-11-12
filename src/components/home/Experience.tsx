@@ -4,7 +4,7 @@ import type { MotionStyle } from 'motion/react';
 import { milestones } from '@/data/profile';
 import { cssVars, useMediaQuery } from '@/lib/hooks';
 import { viridisLight } from '@/lib/viridis';
-import styles from '@/components/home/Experience.module.css';
+import styles from '@/styles/Experience.module.css';
 
 const monthYear = new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' });
 

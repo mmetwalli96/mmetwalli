@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import styles from '@/components/layout/Backdrop.module.css';
+import styles from '@/styles/Backdrop.module.css';
 
 export function Backdrop() {
   const ref = useRef<HTMLDivElement>(null);

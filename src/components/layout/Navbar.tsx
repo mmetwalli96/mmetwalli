@@ -7,7 +7,7 @@ import { LocalTime } from '@/components/ui/LocalTime';
 import { Monogram } from '@/components/ui/Monogram';
 import { MobileMenu } from '@/components/layout/MobileMenu';
 import { NAV_LINKS } from '@/components/layout/navigation';
-import styles from '@/components/layout/Navbar.module.css';
+import styles from '@/styles/Navbar.module.css';
 
 export function Navbar() {
   const { pathname } = useLocation();

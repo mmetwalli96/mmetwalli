@@ -365,6 +365,12 @@
   background: var(--c);
 }
 
+.demoWrap {
+  display: flex;
+  justify-content: center;
+  margin-block: 2rem;
+}
+
 @media (max-width: 860px) {
   .section {
     grid-template-columns: 1fr;

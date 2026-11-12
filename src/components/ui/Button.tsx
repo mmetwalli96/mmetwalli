@@ -2,7 +2,7 @@ import type { ButtonHTMLAttributes } from 'react';
 import { Link } from 'react-router';
 import { Magnetic } from '@/components/ui/Magnetic';
 import { RollText } from '@/components/ui/RollText';
-import styles from '@/components/ui/Button.module.css';
+import styles from '@/styles/Button.module.css';
 
 type Variant = 'solid' | 'ghost';
 

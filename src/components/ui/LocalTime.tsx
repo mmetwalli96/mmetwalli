@@ -1,6 +1,6 @@
 import { useSyncExternalStore } from 'react';
 import { profile } from '@/data/profile';
-import styles from '@/components/ui/LocalTime.module.css';
+import styles from '@/styles/LocalTime.module.css';
 
 let current = new Date();
 let timer = 0;

@@ -4,7 +4,7 @@ import { AnimatePresence, motion, useAnimate, useReducedMotion } from 'motion/re
 import { isContactConnected, sendContactMessage } from '@/lib/contact';
 import { Button } from '@/components/ui/Button';
 import { SuccessMark } from '@/components/contact/SuccessMark';
-import styles from '@/components/contact/ContactForm.module.css';
+import styles from '@/styles/ContactForm.module.css';
 
 type Field = 'name' | 'email' | 'subject' | 'message';
 type Values = Record<Field, string>;

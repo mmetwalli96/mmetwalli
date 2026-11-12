@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useReducedMotion } from 'motion/react';
 import { viridis, LIGHT_RANGE } from '@/lib/viridis';
-import styles from '@/components/hero/ParticleName.module.css';
+import styles from '@/styles/ParticleName.module.css';
 
 const FAMILY = '"Archivo Variable", "Archivo", "Helvetica Neue", Arial, sans-serif';
 const WEIGHT = 800;

@@ -1,7 +1,7 @@
 import { Page } from '@/components/layout/Page';
 import { ProjectCard } from '@/components/projects/ProjectCard';
 import { projects } from '@/data/projects';
-import styles from '@/pages/Projects.module.css';
+import styles from '@/styles/Projects.module.css';
 
 export default function Projects() {
   return (

@@ -1,7 +1,7 @@
 import { Page } from '@/components/layout/Page';
 import { ButtonLink } from '@/components/ui/Button';
 import { ScatterTitle } from '@/components/ui/ScatterTitle';
-import styles from '@/pages/NotFound.module.css';
+import styles from '@/styles/NotFound.module.css';
 
 export default function NotFound() {
   return (

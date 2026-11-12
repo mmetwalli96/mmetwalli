@@ -1,6 +1,6 @@
 import { useReducedMotion } from 'motion/react';
 import { cssVars } from '@/lib/hooks';
-import styles from '@/components/projects/AgentGraph.module.css';
+import styles from '@/styles/AgentGraph.module.css';
 
 const ORCH = { x: 320, y: 86 };
 const AGENTS = [

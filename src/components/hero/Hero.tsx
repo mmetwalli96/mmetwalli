@@ -3,7 +3,7 @@ import { profile } from '@/data/profile';
 import { useMediaQuery } from '@/lib/hooks';
 import { ButtonLink } from '@/components/ui/Button';
 import { ParticleName } from '@/components/hero/ParticleName';
-import styles from '@/components/hero/Hero.module.css';
+import styles from '@/styles/Hero.module.css';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 

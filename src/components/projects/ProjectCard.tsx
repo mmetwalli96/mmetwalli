@@ -4,7 +4,7 @@ import { motion, useReducedMotion, useSpring } from 'motion/react';
 import type { Project } from '@/data/projects';
 import { ButtonLink } from '@/components/ui/Button';
 import { AgentGraph } from '@/components/projects/AgentGraph';
-import styles from '@/components/projects/ProjectCard.module.css';
+import styles from '@/styles/ProjectCard.module.css';
 
 export function ProjectCard({ project }: { project: Project }) {
   const ref = useRef<HTMLElement>(null);

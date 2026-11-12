@@ -10,6 +10,7 @@ import Projects from '@/pages/Projects';
 import Contact from '@/pages/Contact';
 import NotFound from '@/pages/NotFound';
 import MmAuto from '@/pages/MmAuto';
+import MmautoDemo from '@/pages/MmautoDemo';
 
 export default function App() {
   const location = useLocation();
@@ -27,6 +28,7 @@ export default function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/projects/mm-auto" element={<MmAuto />} />
+            <Route path="/projects/mm-auto/demo" element={<MmautoDemo />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AnimatePresence>

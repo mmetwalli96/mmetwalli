@@ -4,7 +4,7 @@ import { usePageTitle } from '@/lib/hooks';
 import { viridisLight } from '@/lib/viridis';
 import { useIsInitialPage } from '@/components/layout/transition-context';
 import { Footer } from '@/components/layout/Footer';
-import styles from '@/components/layout/Page.module.css';
+import styles from '@/styles/Page.module.css';
 
 const BAR_COUNT = 7;
 const BAR_COLORS = Array.from({ length: BAR_COUNT }, (_, i) => viridisLight(i / (BAR_COUNT - 1)));

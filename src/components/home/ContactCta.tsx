@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import { RollText } from '@/components/ui/RollText';
-import styles from '@/components/home/ContactCta.module.css';
+import styles from '@/styles/ContactCta.module.css';
 
 export function ContactCta() {
   return (

@@ -3,7 +3,7 @@ import { useInView } from 'motion/react';
 import { skillGroups } from '@/data/profile';
 import { cssVars } from '@/lib/hooks';
 import { Magnetic } from '@/components/ui/Magnetic';
-import styles from '@/components/home/Skills.module.css';
+import styles from '@/styles/Skills.module.css';
 
 const GROUP_COLORS = ['var(--v1)', 'var(--v2)', 'var(--v3)', 'var(--v4)', 'var(--v5)'];
 

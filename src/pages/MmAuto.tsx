@@ -6,10 +6,11 @@ import { AnimatePresence, motion } from 'motion/react';
 import { Page } from '@/components/layout/Page';
 import { ScatterTitle } from '@/components/ui/ScatterTitle';
 import { cssVars } from '@/lib/hooks';
-import styles from '@/pages/MmAuto.module.css';
+import styles from '@/styles/MmAuto.module.css';
 import graphImg from '@/assets/mm-auto/graph.png';
 import sqlImg from '@/assets/mm-auto/sql.png';
 import solutionImg from '@/assets/mm-auto/solution.png';
+import { Button } from '@/components/ui/Button';
 
 type Diagram = { src: string; alt: string; width: number; height: number };
 
@@ -351,7 +352,7 @@ export default function MmAuto() {
           </div>
           <Reveal className={`${styles.body} ${styles.prose}`}>
             <p>
-              There is a shortfall in the supply chain. The shortfall appears as the supply-shortfall interruption code
+              There is a shortfall in the supply of connecting rod. The shortfall appears as the supply-shortfall interruption code
               on a <code className={styles.rel}>SUPPLIES</code> relationship between a supplier and a part.
             </p>
             <p>
@@ -397,6 +398,12 @@ export default function MmAuto() {
           <Figure diagram={DIAGRAMS.solution} />
         </Reveal>
       </article>
+      <div className={styles.demoWrap}>
+        <Link to="/projects/mm-auto/demo">
+          <Button>Start</Button>
+        </Link>
+      </div>
+
     </Page>
   );
 }

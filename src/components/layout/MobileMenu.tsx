@@ -4,7 +4,7 @@ import { NavLink } from 'react-router';
 import { AnimatePresence, motion } from 'motion/react';
 import { LocalTime } from '@/components/ui/LocalTime';
 import { NAV_LINKS } from '@/components/layout/navigation';
-import styles from '@/components/layout/MobileMenu.module.css';
+import styles from '@/styles/MobileMenu.module.css';
 
 type Props = {
   open: boolean;
