@@ -1,7 +1,7 @@
 const BASE_URL = (import.meta.env.VITE_MMAUTO_URL ?? '').trim().replace(/\/+$/, '');
 
 export const ENDPOINTS = {
-    reset: 'reset',
+    reset: '/reset',
     updateEmployee: '/update/employee/contact',
 } as const;
 
