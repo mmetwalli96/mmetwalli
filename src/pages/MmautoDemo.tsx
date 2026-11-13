@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-import type { FormEvent, ReactNode } from 'react';
+import type { ReactNode, SubmitEvent } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { Page } from '@/components/layout/Page';
 import { resetDemo, updateEmployeeContact } from '@/lib/api';
 import type { ApiResponse, EmployeeContact } from '@/lib/api';
+import { useLiveTables } from '@/lib/hooks';
+import { LiveTables } from '@/components/mm-auto/LiveTables';
 import styles from '@/styles/MmautoDemo.module.css';
 
 type Status = 'idle' | 'running' | 'success' | 'error';
@@ -79,7 +81,7 @@ function ActionCard({
     onDone(result);
   };
 
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const onSubmit = (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (status === 'running' || locked) return;
     if (canSend && !canSend()) return;
@@ -208,6 +210,9 @@ export default function MmautoDemo() {
 
   const [resetDone, setResetDone] = useState(false);
 
+  const [showTables, setShowTables] = useState(false);
+  const live = useLiveTables(showTables);
+
   const [contact, setContact] = useState<EmployeeContact>({ name: '', email: '' });
   const [contactErrors, setContactErrors] = useState<ContactErrors>({});
   const [showErrors, setShowErrors] = useState(false);
@@ -237,6 +242,7 @@ export default function MmautoDemo() {
   return (
     <Page title="MM AUTO DEMO">
       <div className={`container ${styles.page}`}>
+        <h1 className={`display ${styles.title}`}>MM AUTO DEMO</h1>
 
         <div className={styles.actions}>
           <ActionCard
@@ -262,10 +268,13 @@ export default function MmautoDemo() {
             buttonLabel="Update contact"
             successText="Contact record updated."
             failText="Contact record wasn’t updated."
-            lockedText={resetDone ? undefined : 'Reset First'}
+            lockedText={resetDone ? undefined : 'Run the reset first. This step unlocks when it succeeds.'}
             canSend={checkContact}
             run={() => updateEmployeeContact({ name: contact.name.trim(), email: contact.email.trim() })}
-            onDone={record('Update contact')}
+            onDone={(result) => {
+              if (result.ok) setShowTables(true);
+              record('Update contact')(result);
+            }}
           >
             <div className={styles.fields}>
               <Field
@@ -288,6 +297,8 @@ export default function MmautoDemo() {
             </div>
           </ActionCard>
         </div>
+
+        {showTables && <LiveTables {...live} />}
 
         <section className={styles.logSection} aria-labelledby="log-title">
           <div className={styles.logHead}>

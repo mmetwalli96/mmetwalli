@@ -400,7 +400,7 @@ export default function MmAuto() {
       </article>
       <div className={styles.demoWrap}>
         <Link to="/projects/mm-auto/demo">
-          <Button>Start</Button>
+          <Button>Let's Try It</Button>
         </Link>
       </div>
 
