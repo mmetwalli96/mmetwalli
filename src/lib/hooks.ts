@@ -55,8 +55,8 @@ function parse<T>(data: string): T | null {
   }
 }
 
-function applyChange<Row extends { id: number }>(rows: Row[], { op, id, row }: sseTypes.ChangeEvent): Row[] {
-  if (op === 'DELETE') return rows.filter((r) => r.id !== id);
+function applyChange<Row extends { id: number }>(rows: Row[], { operation, id, row }: sseTypes.ChangeEvent): Row[] {
+  if (operation === 'DELETE') return rows.filter((r) => r.id !== id);
   if (!row) return rows;
   const next = { ...row, id } as unknown as Row;
   const index = rows.findIndex((r) => r.id === id);
@@ -113,12 +113,12 @@ export function useLiveTables(enabled: boolean, EVENTS_URL?: string) {
     for (const table of TABLES) {
       es.addEventListener(table, (event) => {
         const change = parse<sseTypes.ChangeEvent>((event as MessageEvent<string>).data);
-        if (!change || !['INSERT', 'UPDATE', 'DELETE'].includes(change.op)) return;
+        if (!change || !['INSERT', 'UPDATE', 'DELETE'].includes(change.operation)) return;
         setTables((current) => ({
           ...current,
           [table]: applyChange(current[table] as { id: number }[], change),
         }));
-        if (change.op !== 'DELETE') markRecent(`${table}:${change.id}`, change.op);
+        if (change.operation !== 'DELETE') markRecent(`${table}:${change.id}`, change.operation);
         setLastUpdate(new Date());
       });
     }

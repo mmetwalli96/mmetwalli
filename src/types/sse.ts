@@ -27,12 +27,12 @@ export type ConnectionStatus = 'off' | 'connecting' | 'live' | 'reconnecting' | 
  
 type TableOperation = 'INSERT' | 'UPDATE' | 'DELETE';
  
-export type ChangeEvent = { op: TableOperation; id: number; row?: Record<string, unknown> };
+export type ChangeEvent = { operation: TableOperation; id: number; row?: Record<string, unknown> };
 
 export type RecentChanges = Record<string, 'INSERT' | 'UPDATE'>;
 
 export type TableChange = {
-  op: TableOperation;
+  operation: TableOperation;
   id: number;
   row?: Record<string, unknown>;
 };
