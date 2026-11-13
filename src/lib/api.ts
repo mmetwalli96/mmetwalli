@@ -6,7 +6,7 @@ export const ENDPOINTS = {
     tableChanges: '/table/changes'
 } as const;
 
-const TIMEOUT_MS = 20_000;
+const TIMEOUT_MS = 30000;
 
 export type ApiResponse = { ok: boolean; success: boolean; status: number; message: string };
 
