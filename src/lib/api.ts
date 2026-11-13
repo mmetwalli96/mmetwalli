@@ -1,10 +1,12 @@
-export const BASE_URL = (import.meta.env.VITE_MMAUTO_URL ?? '').trim().replace(/\/+$/, '');
+const BASE_URL = (import.meta.env.VITE_MMAUTO_URL ?? '').trim().replace(/\/+$/, '');
 
-export const ENDPOINTS = {
+const ENDPOINTS = {
     reset: '/reset',
     updateEmployee: '/update/employee/contact',
     tableChanges: '/table/changes'
 } as const;
+
+export const tableChangesStream = `${BASE_URL}${ENDPOINTS.tableChanges}`;
 
 const TIMEOUT_MS = 30000;
 

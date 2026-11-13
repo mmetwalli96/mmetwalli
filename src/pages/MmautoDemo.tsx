@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import type { ReactNode, SubmitEvent } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { Page } from '@/components/layout/Page';
-import { resetDemo, updateEmployeeContact } from '@/lib/api';
-import type { ApiResponse, EmployeeContact } from '@/lib/api';
+import { resetDemo, updateEmployeeContact, tableChangesStream } from '@/lib/api';
+import type { ApiResponse, EmployeeContact} from '@/lib/api';
 import { useLiveTables } from '@/lib/hooks';
 import { LiveTables } from '@/components/mm-auto/LiveTables';
 import styles from '@/styles/MmautoDemo.module.css';
@@ -211,7 +211,7 @@ export default function MmautoDemo() {
   const [resetDone, setResetDone] = useState(false);
 
   const [showTables, setShowTables] = useState(false);
-  const live = useLiveTables(showTables);
+  const live = useLiveTables(showTables, tableChangesStream);
 
   const [contact, setContact] = useState<EmployeeContact>({ name: '', email: '' });
   const [contactErrors, setContactErrors] = useState<ContactErrors>({});
