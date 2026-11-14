@@ -62,7 +62,7 @@ const TABLES = [
     columns: (
       <>
         <code>id</code>, <code>incident</code>, <code>interruption</code> (the code from <code>interruption_codes</code>,
-        not the id), <code>occurence_time</code>, <code>description</code>, <code>resolution_date</code>,{' '}
+        not the id), <code>occurrence_time</code>, <code>description</code>, <code>resolution_date</code>,{' '}
         <code>status</code> (<code>'In Progress'</code> or <code>'Resolved'</code>)
       </>
     ),

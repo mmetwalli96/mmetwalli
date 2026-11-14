@@ -2,7 +2,7 @@ export type IncidentHistoryRow = {
   id: number;
   incident: string;
   interruption: string;
-  occurence_time: string;
+  occurrence_time: string;
   description: string;
   resolution_date: string | null;
   status: string;

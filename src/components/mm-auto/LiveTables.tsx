@@ -48,7 +48,7 @@ const INCIDENT_COLUMNS: Column<IncidentHistoryRow>[] = [
   { key: 'id', label: 'id', render: (r) => r.id },
   { key: 'incident', label: 'incident', render: (r) => <span className={styles.code}>{r.incident}</span> },
   { key: 'interruption', label: 'interruption', render: (r) => <span className={styles.code}>{r.interruption}</span> },
-  { key: 'occurence_time', label: 'occurence_time', render: (r) => formatTime(r.occurence_time) },
+  { key: 'occurrence_time', label: 'occurrence_time', render: (r) => formatTime(r.occurrence_time) },
   { key: 'description', label: 'description', render: (r) => r.description, wide: true },
   { key: 'resolution_date', label: 'resolution_date', render: (r) => formatTime(r.resolution_date) },
   { key: 'status', label: 'status', render: (r) => <StatusPill status={r.status} /> },
