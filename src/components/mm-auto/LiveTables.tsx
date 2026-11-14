@@ -71,7 +71,6 @@ type DataTableProps<Row extends { id: number }> = {
 };
 
 function DataTable<Row extends { id: number }>({ name, description, rows, columns, recent }: DataTableProps<Row>) {
-  // Newest rows first, so live changes appear at the top
   const sorted = [...rows].sort((a, b) => b.id - a.id);
 
   return (
@@ -165,21 +164,22 @@ export function LiveTables({ tables, connection, recent, lastUpdate }: LiveTable
           {lastUpdate && <span className={styles.updated}>Last change {timeOnly.format(lastUpdate)}</span>}
         </div>
       </div>
-
-      <DataTable
-        name="incident_history"
-        description="One row per incident"
-        rows={tables.incident_history}
-        columns={INCIDENT_COLUMNS}
-        recent={recent}
-      />
-      <DataTable
-        name="progress_tracker"
-        description="Every step taken on an incident"
-        rows={tables.progress_tracker}
-        columns={PROGRESS_COLUMNS}
-        recent={recent}
-      />
+      <div className={styles.grid}>
+        <DataTable
+          name="incident_history"
+          description="One row per incident"
+          rows={tables.incident_history}
+          columns={INCIDENT_COLUMNS}
+          recent={recent}
+        />
+        <DataTable
+          name="progress_tracker"
+          description="Every step taken on an incident"
+          rows={tables.progress_tracker}
+          columns={PROGRESS_COLUMNS}
+          recent={recent}
+        />
+      </div>
     </motion.section>
   );
 }
